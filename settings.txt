@@ -1,6 +1,6 @@
 6
 trackLength=202
-battleFieldCountRows=6
-battleFieldCountColumns=12
+RaceTrackCountRows=6
+RaceTrackCountColumns=12
 archerSkin=A
 wizardSkin=W

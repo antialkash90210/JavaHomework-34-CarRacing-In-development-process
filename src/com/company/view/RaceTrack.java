@@ -2,7 +2,7 @@ package com.company.view;
 
 import com.company.entities.supportings.Point;
 
-public class BattleField {
+public class RaceTrack {
 
     private final char EMPTY_CELL = '.';
 
@@ -10,7 +10,7 @@ public class BattleField {
     private int countColumns;
     private char[][] field;
 
-    public BattleField(int countRows, int countColumns) {
+    public RaceTrack(int countRows, int countColumns) {
         this.countRows = countRows;
         this.countColumns = countColumns;
         field = new char[countRows][countColumns];

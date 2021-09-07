@@ -4,7 +4,7 @@ import com.company.entities.*;
 import com.company.entities.Car;
 import com.company.util.ConsoleHelper;
 import com.company.util.SettingsHelper;
-import com.company.view.BattleField;
+import com.company.view.RaceTrack;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -12,10 +12,10 @@ import java.util.HashMap;
 public class GameManager {
 
     private Player player1, player2;
-    private BattleField battleField;
+    private RaceTrack raceTrack;
 
-    private int battleFieldCountRows;
-    private int battleFieldCountColumns;
+    private int RaceTrackCountRows;
+    private int RaceTrackCountColumns;
     private static int trackLength;
 
     private static Map<Integer, Car> cars = new HashMap<Integer, Car>();
@@ -24,8 +24,8 @@ public class GameManager {
     public GameManager() {
         SettingsHelper.loadFromFile();
 
-        battleFieldCountRows = SettingsHelper.getIntValue("battleFieldCountRows");//кол-во строк поля
-        battleFieldCountColumns = SettingsHelper.getIntValue("battleFieldCountColumns");//кол-во столбцов поля
+        RaceTrackCountRows = SettingsHelper.getIntValue("RaceTrackCountRows");//кол-во строк поля
+        RaceTrackCountColumns = SettingsHelper.getIntValue("RaceTrackCountColumns");//кол-во столбцов поля
 
         trackLength = SettingsHelper.getIntValue("trackLength");//Длина трассы в метрах
     }
@@ -34,8 +34,8 @@ public class GameManager {
 
     //ввод игроков и взаимодействие на поле
     public void init() {
-        battleField = new BattleField(battleFieldCountRows, battleFieldCountColumns);
-        battleField.clear();//очистить поле
+        raceTrack = new RaceTrack(RaceTrackCountRows, RaceTrackCountColumns);
+        raceTrack.clear();//очистить поле
 
         String player1Name = ConsoleHelper.inputString("Введите имя игрока 1: ");
         player1 = new Player(player1Name);
@@ -48,7 +48,7 @@ public class GameManager {
 
     public void gameLoop() throws Exception {
         while (true) {
-            battleField.drawField();//вывод поля на экран
+            raceTrack.drawField();//вывод поля на экран
             break;
         }
     }
@@ -80,7 +80,7 @@ public class GameManager {
 
     //Метод производящий вычисления заездов
     public void calculationOfRaces() throws InterruptedException {
-        HashMap<String, Car> results = new HashMap<String, Car>();
+        HashMap<Integer, Car> results = new HashMap<Integer, Car>();
 
         setCars();//Получим список гонщиков, участвующих в заезде
 
